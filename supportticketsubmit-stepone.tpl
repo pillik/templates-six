@@ -31,3 +31,6 @@
         </div>
     </div>
 </div>
+<!-- Insert RDS -->
+<p><a href="/cart.php?gid=64"><i class="fa fa-life-ring" aria-hidden="true"></i> Remote Desktop Support</a>
+<br />This service allows you to request remote support from our support staff. Our staff will log in to your computer and assist you with e-mail and FTP settings as well as guidance for the Client Area.</p>

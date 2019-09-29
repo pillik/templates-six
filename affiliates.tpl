@@ -97,7 +97,7 @@
         <table id="tableAffiliatesList" class="table table-list hidden">
             <thead>
                 <tr>
-                    <th>{$LANG.affiliatessignupdate}</th>
+                    <th>{$LANG.affiliatessignupdate}</th><th>Next Due Date</th>
                     <th>{$LANG.orderproduct}</th>
                     <th>{$LANG.affiliatesamount}</th>
                     <th>{$LANG.affiliatescommission}</th>
@@ -108,7 +108,7 @@
             {foreach from=$referrals item=referral}
                 <tr class="text-center">
                     <td><span class="hidden">{$referral.datets}</span>{$referral.date}</td>
-                    <td>{$referral.service}</td>
+                    <td>{get_referal_product_duedate id=$referral.id}</td><td>{$referral.service} - {get_referal_product id=$referral.id}</td>
                     <td data-order="{$referral.amountnum}">{$referral.amountdesc}</td>
                     <td data-order="{$referral.commissionnum}">{$referral.commission}</td>
                     <td><span class='label status status-{$referral.rawstatus|strtolower}'>{$referral.status}</span></td>

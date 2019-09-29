@@ -1,4 +1,4 @@
-<div class="tiles clearfix">
+<!-- WSCN -->{foreach from=$notetoparea item=notetoparea_output}<div style="margin:15px 0;">{$notetoparea_output}</div>{/foreach}<div class="tiles clearfix">
     <div class="row">
         <div class="col-sm-3 col-xs-6 tile" onclick="window.location='clientarea.php?action=services'">
             <a href="clientarea.php?action=services">
@@ -64,7 +64,7 @@
     </div>
 </form>
 
-{foreach from=$addons_html item=addon_html}
+<!-- WSCN -->{foreach from=$ws_html item=w_html}<div style="margin:15px 0;">{$w_html}</div>{/foreach}{foreach from=$addons_html item=addon_html}
     <div>
         {$addon_html}
     </div>
@@ -141,3 +141,4 @@
         </div>
     </div>
 </div>
+{foreach from=$notebottomarea item=notebottomarea_output}<div style="margin:15px 0;">{$notebottomarea_output}</div>{/foreach}

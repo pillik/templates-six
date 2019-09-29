@@ -13,7 +13,7 @@
 <section id="footer">
     <div class="container">
         <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
-        <p>{lang key="copyrightFooterNotice" year=$date_year company=$companyname}</p>
+        <p>{lang key="copyrightFooterNotice" year=$date_year company=$companyname} | <a href="/terms-of-service.php">Terms Of Service</a> | <a href="/privacy-policy.php">Privacy Policy</a> | <a href="/paia.php">PAIA</a> | <a href="/aup.php">Acceptable Use Policy</a></p>
     </div>
 </section>
 

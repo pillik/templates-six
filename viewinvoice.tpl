@@ -54,7 +54,8 @@
 
                     {if $status eq "Unpaid" || $status eq "Draft"}
                         <div class="small-text">
-                            {$LANG.invoicesdatedue}: {$datedue}
+<!-- remove this {$LANG.invoicesdatedue}: {$datedue} -->
+                            <!-- Add this --><strong>Payment due on presentation</strong>
                         </div>
                         <div class="payment-btn-container hidden-print" align="center">
                             {$paymentbutton}
@@ -63,7 +64,17 @@
 
                 </div>
             </div>
+<!-- Insert for payment reference -->
+Account No: <br/>
 
+<div class="small-text">
+<small><strong>CID{$userid} (Please use this as reference when making payment)
+<br/>
+(If you are paying one from multiple invoices please use the reference CID{$userid} as well as the {$pagetitle})
+
+<p class="text-danger">(Please use FNB ATM when making cash deposits as bank charges are R30 on small deposits)</p></strong>
+</small></div>
+        
             <hr>
 
             {if $paymentSuccessAwaitingNotification}
@@ -115,6 +126,10 @@
                             <form method="post" action="{$smarty.server.PHP_SELF}?id={$invoiceid}" class="form-inline">
                                 {$gatewaydropdown}
                             </form>
+<!-- begin snapscan --> 
+    <div class="col-sm-6" align="right"><strong>Pay with Snapscan</strong><a href="https://pos.snapscan.io/qr/l7BUVKJB?id={$invoiceid}&amount={$total|replace:'R':''|replace:'.':''}&customvalue={$userid}&strict=true" target="_blank"><img src="https://pos.snapscan.io/qr/l7BUVKJB.svg?id={$invoiceid}&amount={$total|replace:'R':''|replace:'.':''}&customvalue={$userid}&snap_code_size=125&strict=true"></a></div>
+<!-- end snapscan -->                        
+                        
                         {else}
                             {$paymentmethod}{if $paymethoddisplayname} ({$paymethoddisplayname}){/if}
                         {/if}
@@ -125,6 +140,11 @@
                     <strong>{$LANG.invoicesdatecreated}</strong><br>
                     <span class="small-text">
                         {$date}<br><br>
+ <!-- begin snapscan -->
+            {if $status eq "Unpaid"}
+			    <div class="col-sm-6"><a href="http://www.getsnapscan.com/user.html" target="_blank"><img src="/images/snapscan-logo.svg" class="img-responsive"></a><br /></div>
+			{/if}
+<!-- end snapscan -->                        
                     </span>
                 </div>
             </div>

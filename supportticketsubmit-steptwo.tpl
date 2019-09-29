@@ -1,7 +1,9 @@
 {if $errormessage}
     {include file="$template/includes/alert.tpl" type="error" errorshtml=$errormessage}
 {/if}
-
+<!-- Insert RDS -->
+<p><a href="/cart.php?gid=64"><i class="fa fa-life-ring" aria-hidden="true"></i> Remote Desktop Support</a>
+<br />This service allows you to request remote support from our support staff. Our staff will log in to your computer and assist you with e-mail and FTP settings as well as guidance for the Client Area.</p>
 <form method="post" action="{$smarty.server.PHP_SELF}?step=3" enctype="multipart/form-data" role="form">
 
     <div class="row">
@@ -59,6 +61,17 @@
             </select>
         </div>
     </div>
+ <!-- Add KB links -->   
+ <div class="alert alert-info">
+     <strong>Useful Links - FAQ's</strong><br>
+                  Anything to do with:&nbsp;&nbsp;<a title="Anything to do with E-mails" href="https://sadomain.support/index.php?action=show&amp;cat=1" target="_blank">Emails</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a title="Anything to do with Domain Names" href="https://sadomain.support/index.php?action=show&amp;cat=9" target="_blank">Domain Names</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a title="Anything to do with Hosting Packages" href="https://sadomain.support/index.php?action=show&amp;cat=5" target="_blank">Hosting Packages</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a title="Anything to do with Kopage" href="https://sadomain.support/index.php?action=show&amp;cat=7" target="_blank">Kopage</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a title="Anything to do with Client Area Updates" href="https://sadomain.support/index.php?action=show&amp;cat=10" target="_blank">Client Area Updates</a></span>
+  </div>   
+<!-- End KB links -->
+<!-- Move custom fields to here -->    
+    <div id="customFieldsContainer">
+        {include file="$template/supportticketsubmit-customfields.tpl"}
+    </div>
+    
     <div class="form-group">
         <label for="inputMessage">{$LANG.contactmessage}</label>
         <textarea name="message" id="inputMessage" rows="12" class="form-control markdown-editor" data-auto-save-name="client_ticket_open">{$message}</textarea>
@@ -68,6 +81,8 @@
         <div class="col-sm-12">
             <label for="inputAttachments">{$LANG.supportticketsticketattachments}</label>
         </div>
+
+        
         <div class="col-sm-9">
             <input type="file" name="attachments[]" id="inputAttachments" class="form-control" />
             <div id="fileUploadsContainer"></div>
@@ -77,17 +92,20 @@
                 <i class="fas fa-plus"></i> {$LANG.addmore}
             </button>
         </div>
+ 
         <div class="col-xs-12 ticket-attachments-message text-muted">
             {$LANG.supportticketsallowedextensions}: {$allowedfiletypes}
         </div>
     </div>
 
-    <div id="customFieldsContainer">
+        <div id="autoAnswerSuggestions" class="well hidden"></div>    
+    
+    
+    <!--<div id="customFieldsContainer">
         {include file="$template/supportticketsubmit-customfields.tpl"}
-    </div>
+    </div>-->
 
-    <div id="autoAnswerSuggestions" class="well hidden"></div>
-
+    
     <div class="text-center margin-bottom">
         {include file="$template/includes/captcha.tpl"}
     </div>

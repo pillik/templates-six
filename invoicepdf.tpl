@@ -69,7 +69,9 @@ $pdf->SetFillColor(239);
 $pdf->Cell(0, 8, $pagetitle, 0, 1, 'L', '1');
 $pdf->SetFont($pdfFont, '', 10);
 $pdf->Cell(0, 6, Lang::trans('invoicesdatecreated') . ': ' . $datecreated, 0, 1, 'L', '1');
+/** remove this line
 $pdf->Cell(0, 6, Lang::trans('invoicesdatedue') . ': ' . $duedate, 0, 1, 'L', '1');
+**/
 $pdf->Ln(10);
 
 $startpage = $pdf->GetPage();
@@ -187,6 +189,29 @@ $tblhtml .= '
         <td align="center">' . $balance . '</td>
     </tr>
 </table>';
+
+$tblhtml .= '<table width="100%" bgcolor="#ccc" cellspacing="1" cellpadding="2" border="0">
+    <tr height="30" bgcolor="#efefef" style="font-weight:bold;text-align:center;">
+        <td>When Making Payments</td>
+        <td>Payment by EFT</td>
+        <td>SnapScan Payment</td>
+    </tr>
+    <tr bgcolor="#fff">
+       <td align="center"><strong>Please use the reference number: CID'.$userid.'</strong><br/>
+       
+       (If you are paying one from multiple proformas please use the Proforma number as well)
+       
+       <br/><strong><u>All Proformas are payable upon presentation.</u></strong></td>
+<td align="center">
+
+     Bank: First National Bank (FNB)<br/>Account: SA Domain Internet Services cc <br/> Branch Code: 201 809<br/>Account Number: 6206 965 2553 (Current Account)<br />(Please use FNB ATM for deposits to avoid R30 bank charges on small deposits)
+                       
+                                     
+      </td>
+       <td align="center"><img src="https://pos.snapscan.io/qr/l7BUVKJB.png?id=' . $invoiceid . '&amount=' . str_replace(str_split('R.'), '',$total) . '&customvalue=' . $userid . '&snap_code_size=' . 125 . '&strict=true"></td>
+     </tr>
+    </table>';
+
 
 $pdf->writeHTML($tblhtml, true, false, false, false, '');
 

@@ -1,6 +1,6 @@
 {if $captcha->isEnabled() && $captcha->isEnabledForForm($captchaForm)}
     <div class="row">
-        {if $templatefile == 'homepage'}
+        {if $filename == 'index'}
             <div class="domainchecker-homepage-captcha">
         {/if}
 
@@ -25,7 +25,7 @@
             </div>
         {/if}
 
-        {if $templatefile == 'homepage'}
+        {if $filename == 'index'}
             </div>
         {/if}
     </div>
